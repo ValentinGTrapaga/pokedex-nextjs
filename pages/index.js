@@ -8,29 +8,24 @@ export default function Home() {
   //TODO: Meter todo en un context y hacer paginacion mas sencilla
   const [pokemonsUrls, setPokemonUrls] = useState(null)
   const [fetchURL, setFetchURL] = useState(
-    'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0'
+    'https://pokeapi.co/api/v2/pokemon?limit=151&offset=151'
   )
-  const [next, setNext] = useState(null)
-  const [prev, setPrev] = useState(null)
+  const [next, setNext] = useState('')
+  const [prev, setPrev] = useState('')
 
   useEffect(() => {
     fetch(fetchURL)
       .then((res) => res.json())
       .then((response) => {
-        const { prev, next, results } = response
+        const { previous, next, results } = response
         const pokemonsArr = results.map((pokemon) => pokemon.url)
         setPokemonUrls(pokemonsArr)
         console.log('prev', prev)
         console.log('next', next)
-        setPrev(prev)
+        setPrev(previous)
         setNext(next)
       })
   }, [fetchURL])
-
-  function handleClick(url) {
-    console.log('aca aprete', url)
-    setFetchURL(url)
-  }
 
   const pokemonsCards = pokemonsUrls?.map((pokemonUrl) => (
     <PokeCardSmall
@@ -51,11 +46,6 @@ export default function Home() {
       <NavBar
         next={next}
         prev={prev}
-        handlePrevClick={() => handleClick(prev)}
-        handleHomeClick={() =>
-          handleClick('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0')
-        }
-        handleNextClick={() => handleClick(next)}
       />
       <h1 className='text-white text-center text-xl md:text-2xl lg:text-5xl'>
         Generation I

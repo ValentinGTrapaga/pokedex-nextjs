@@ -9,12 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "nes.css": "2.3.0",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "standard": "17.0.0",
-    "swr": "^1.3.0"
+    "standard": "17.0.0"
   },
   "devDependencies": {
     "autoprefixer": "10.4.12",
