@@ -5,13 +5,13 @@ const Abilities = ({ abilities }) => {
   const abilitiesDiv = abilities.map((ability, index) => {
     return ability.is_hidden ? (
       <p
-        className='text-center '
+        className='text-center text-[11px]'
         key={index}>
         {capitalize(ability.ability.name)} (h)
       </p>
     ) : (
       <p
-        className='text-center '
+        className='text-center text-[11px]'
         key={index}>
         {capitalize(ability.ability.name)}
       </p>

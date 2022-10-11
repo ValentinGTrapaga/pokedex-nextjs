@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 export const useFetchPokemon = (id) => {
   const [pokemon, setPokemon] = useState({})
+  const [abilities, setAbilities] = useState({})
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -12,10 +13,11 @@ export const useFetchPokemon = (id) => {
         .then((data) => {
           console.log(data)
           setPokemon(data)
+          setAbilities(data.abilities)
           setLoading(false)
         })
         .catch((error) => console.log(error))
   }, [id])
 
-  return { pokemon, loading }
+  return { pokemon, loading, abilities }
 }

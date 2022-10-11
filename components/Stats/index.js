@@ -7,7 +7,7 @@ const Stats = ({ stats }) => {
     sumStats += stat.base_stat
     return (
       <div
-        className='flex flex-row items-center justify-between text-sm'
+        className='flex flex-row items-center justify-between text-[12px]'
         key={index}>
         <span className=''>{capitalize(stat.stat.name)}</span>
         <span className=''>{stat.base_stat}</span>
@@ -16,10 +16,10 @@ const Stats = ({ stats }) => {
   })
 
   return (
-    <div className='flex flex-col w-full gap-1 p-1'>
+    <div className='flex flex-col w-full gap-1 p-2'>
       <p className='text-center text-sm opacity-30'>Stats</p>
       {statsDiv}
-      <div className='flex flex-row items-center justify-between text-sm'>
+      <div className='flex flex-row items-center justify-between text-[12px]'>
         <span>Total</span>
         <span>{sumStats}</span>
       </div>

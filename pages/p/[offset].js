@@ -1,7 +1,7 @@
 import Head from 'node_modules/next/head'
 import { NavBar } from 'components/NavBar/index'
 import PokeCardSmall from 'components/PokeCardSmall/index'
-import { useUpdateHomePage } from 'components/hooks/useUpdateHomePage'
+import { useUpdateHomePage } from 'hooks/useUpdateHomePage'
 import { NextNavButton, PrevNavButton } from 'components/NavButton/index'
 import { useRouter } from 'node_modules/next/router'
 
