@@ -19,7 +19,7 @@ const Abilities = ({ abilities }) => {
   })
   return (
     <div className=''>
-      <p className='text-center text-sm opacity-30 mb-1'>Abilities</p>
+      <p className='text-center text-sm text-gray-400 mb-1'>Abilities</p>
       {abilitiesDiv}
     </div>
   )

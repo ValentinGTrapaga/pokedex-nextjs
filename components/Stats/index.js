@@ -17,7 +17,7 @@ const Stats = ({ stats }) => {
 
   return (
     <div className='flex flex-col w-full gap-1 p-2'>
-      <p className='text-center text-sm opacity-30'>Stats</p>
+      <p className='text-center text-sm text-gray-400'>Stats</p>
       {statsDiv}
       <div className='flex flex-row items-center justify-between text-[12px]'>
         <span>Total</span>

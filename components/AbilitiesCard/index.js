@@ -6,7 +6,7 @@ export const AbilitiesCard = ({ abilities }) => {
 
   return (
     <div className='container md:col-span-1 border-4 border-black bg-slate-50 text-sm md:text-base'>
-      <h1 className='text-base md:text-lg text-center opacity-30 py-3'>
+      <h1 className='text-base md:text-lg text-center text-gray-400 py-3 border-b-2 border-black'>
         Abilities
       </h1>
       <div className='h-full '>
