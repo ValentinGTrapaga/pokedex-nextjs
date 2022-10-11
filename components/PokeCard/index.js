@@ -8,7 +8,7 @@ import { capitalize } from 'utils/capitalize'
 
 export const Pokecard = ({ pokemon }) => {
   return (
-    <div className='flex flex-col w-[270px] gap-2 bg-white border-4 border-black items-stretch'>
+    <div className='flex flex-col min-w-[270px] gap-2 bg-white border-4 border-black items-stretch mx-auto'>
       <img
         src={pokemon.sprites.front_default}
         alt=''

@@ -1,37 +1,35 @@
-import { useEffect, useState } from 'react'
-import { capitalize } from 'utils/capitalize'
-import { filterEnglishAbility } from 'utils/filterEnglishAbility'
+import { useEffect, useMemo, useState } from 'react'
+import { formatAbility } from 'utils/formatAbility'
 
 async function fetchAllAbilities(abilitiesUrls) {
-  let abilitiesArr = []
-  Promise.all(abilitiesUrls.map((url) => fetch(url)))
+  return Promise.all(abilitiesUrls.map((url) => fetch(url)))
     .then((responses) => Promise.all(responses.map((res) => res.json())))
-    .then((res) =>
-      res.forEach((res) => {
-        const abilityName = res.name
-        const abilityEnglish = filterEnglishAbility(res.effect_entries)
-        const abilityDesc = abilityEnglish[0].effect
-        const abilityToAdd = `${capitalize(abilityName)}: ${abilityDesc}`
-        abilitiesArr.push(abilityToAdd)
-      })
-    )
     .catch((error) => {
-      console.log(error)
+      return error
     })
-  return abilitiesArr
 }
+
+//THANKS TO u/PM_ME_SOME_ANY_THING
 
 export const useFetchAbilities = (abilitiesObj) => {
   const [abilitiesFetched, setAbilitiesFetched] = useState([])
-  const abilitiesUrls = abilitiesObj.map((ability) => ability.ability.url)
+  const abilitiesUrls = useMemo(
+    () => abilitiesObj.map((ability) => ability.ability.url),
+    [abilitiesObj]
+  )
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     fetchAllAbilities(abilitiesUrls)
       .then((res) => {
-        setAbilitiesFetched(res)
+        setAbilitiesFetched(
+          res.map((ability) => {
+            return formatAbility(ability)
+          })
+        )
       })
-      .catch((err) => console.log(err))
-  }, [abilitiesObj])
+      .catch((err) => setError(err))
+  }, [abilitiesUrls])
 
-  return abilitiesFetched
+  return { abilitiesFetched, error }
 }

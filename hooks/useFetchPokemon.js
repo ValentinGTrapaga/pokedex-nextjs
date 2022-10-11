@@ -7,16 +7,14 @@ export const useFetchPokemon = (id) => {
 
   useEffect(() => {
     setLoading(true)
-    id &&
-      fetch('https://pokeapi.co/api/v2/pokemon/' + id)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data)
-          setPokemon(data)
-          setAbilities(data.abilities)
-          setLoading(false)
-        })
-        .catch((error) => console.log(error))
+    fetch('https://pokeapi.co/api/v2/pokemon/' + id)
+      .then((res) => res.json())
+      .then((data) => {
+        setPokemon(data)
+        setAbilities(data.abilities)
+        setLoading(false)
+      })
+      .catch((error) => console.log(error))
   }, [id])
 
   return { pokemon, loading, abilities }

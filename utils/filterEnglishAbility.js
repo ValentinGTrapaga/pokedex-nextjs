@@ -1,3 +1,6 @@
 export const filterEnglishAbility = (abilitiesArr) => {
-  return abilitiesArr.filter((effect) => effect.language.name === 'en')
+  const abilityFiltered = abilitiesArr.filter(
+    (effect) => effect.language.name === 'en'
+  )
+  return abilityFiltered[0].effect
 }

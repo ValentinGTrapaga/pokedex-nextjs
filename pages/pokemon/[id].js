@@ -12,11 +12,19 @@ const Pokemon = () => {
   const { pokemon, loading, abilities } = useFetchPokemon(id)
 
   return (
-    <div className='text-black container'>
+    <>
       <NavBar back />
-      {!loading ? <Pokecard pokemon={pokemon} /> : <p>Loading...</p>}
-      {!loading ? <AbilitiesCard abilities={abilities} /> : <p>Loading...</p>}
-    </div>
+      <div className='text-black container flex flex-col items-stretch justify-center md:flex md:flex-row gap-4 mx-auto'>
+        {!loading ? <Pokecard pokemon={pokemon} /> : <p>Loading...</p>}
+        <div>
+          {!loading ? (
+            <AbilitiesCard abilities={abilities} />
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+      </div>
+    </>
   )
 }
 
