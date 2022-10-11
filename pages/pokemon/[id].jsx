@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pokecard } from './../../components/PokeCard/index'
+import { Pokecard } from '../../components/PokeCard/index'
 import { useRouter } from 'node_modules/next/router'
 import { useFetchPokemon } from 'hooks/useFetchPokemon'
 import { NavBar } from 'components/NavBar/index'

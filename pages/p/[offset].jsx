@@ -5,7 +5,7 @@ import { useUpdateHomePage } from 'hooks/useUpdateHomePage'
 import { NextNavButton, PrevNavButton } from 'components/NavButton/index'
 import { useRouter } from 'node_modules/next/router'
 
-export default function Home() {
+const Home = () => {
   const router = useRouter()
   const { offset } = router.query
   const fetchURL = `https://pokeapi.co/api/v2/pokemon?limit=117&offset=${offset}`
@@ -67,3 +67,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home
