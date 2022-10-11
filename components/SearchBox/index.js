@@ -12,6 +12,7 @@ export const SearchBox = () => {
   }
 
   const handleSubmit = (e) => {
+    e.preventDefault()
     return router.push(`/pokemon/${pokemonSearch}`)
   }
 
@@ -22,7 +23,7 @@ export const SearchBox = () => {
       <input
         onChange={(e) => handleChange(e)}
         type='text'
-        placeholder='Pokemon'
+        placeholder='Pokemon or ID'
         required
         value={pokemonSearch}
         className='w-100 border-black border-2 px-4 py-2 sm:w-3/4'></input>

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { capitalize } from 'utils/capitalize'
+import { useRouter } from 'next/router'
+import Types from '../TypesDiv'
 
 const PokeCardSmall = ({ pokemonUrl }) => {
   const [pokemon, setPokemon] = useState(null)
   const [loading, setLoading] = useState(true)
+  const router = useRouter()
 
   useEffect(() => {
     setLoading(true)
@@ -16,54 +19,28 @@ const PokeCardSmall = ({ pokemonUrl }) => {
       })
   }, [])
 
-  const typeColors = {
-    electric: '#FFEA70',
-    dark: '#5b5b5c',
-    normal: '#B09398',
-    fire: '#FF675C',
-    water: '#0596C7',
-    ice: '#AFEAFD',
-    rock: '#999799',
-    flying: '#7AE7C7',
-    grass: '#4A9681',
-    psychic: '#FFC6D9',
-    ghost: '#561D25',
-    bug: '#A2FAA3',
-    poison: '#795663',
-    ground: '#D2B074',
-    dragon: '#DA627D',
-    steel: '#1D8A99',
-    fighting: '#C8543B',
-    default: '#2A1A1F',
-    fairy: '#FE8EFB'
+  const pushPage = () => {
+    router.push(`/pokemon/${pokemon.id}`)
   }
-
-  const typesDiv = pokemon?.types.map((type) => {
-    return (
-      <span
-        key={type.type.name}
-        style={{ backgroundColor: `${typeColors[type.type.name]}` }}
-        className='px-2 py-1 text-center text-xs sm:text-sm h-full flex justify-center items-center w-full'>
-        <p>{capitalize(type.type.name)}</p>
-      </span>
-    )
-  })
 
   return (
     <div>
       {loading ? (
         <p>loading ...</p>
       ) : (
-        <div className='max-w-xs border-black border-2 bg-slate-50 h-full flex flex-col justify-between mx-auto'>
+        <article
+          onClick={pushPage}
+          className='max-w-[8rem] border-black border-2 bg-slate-50 h-full flex flex-col justify-between mx-auto cursor-pointer'>
           <img
             src={pokemon.sprites.front_default}
-            className='w-full'
+            className='w-[8rem] p-2'
+            alt={pokemon.name}
           />
-          <p className='text-xs sm:text-sm text-center'>
+          <p className='text-[8px] sm:text-[10px] text-center px-1'>
             #{pokemon.id} {capitalize(pokemon.name)}
           </p>
-          <div className='flex flex-col gap-1 h-[60px]'>{typesDiv}</div>
-        </div>
+          <Types pokemon={pokemon} />
+        </article>
       )}
     </div>
   )
