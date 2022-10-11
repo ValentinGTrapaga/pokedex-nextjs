@@ -11,7 +11,7 @@ export default function Home() {
   const fetchURL = `https://pokeapi.co/api/v2/pokemon?limit=117&offset=${offset}`
   const OFFSET_UPDATE = 117
 
-  if (offset > 1154 || offset < 0) {
+  if (Number(offset) > 1154 || Number(offset) < 0) {
     router.push('/p/0')
   }
 
