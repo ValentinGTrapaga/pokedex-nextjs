@@ -11,7 +11,7 @@ async function fetchAllAbilities(abilitiesUrls) {
 
 //THANKS TO u/PM_ME_SOME_ANY_THING
 
-export const useFetchAbilities = (abilitiesObj) => {
+export const useAbilities = (abilitiesObj) => {
   const [abilitiesFetched, setAbilitiesFetched] = useState([])
   const abilitiesUrls = useMemo(
     () => abilitiesObj.map((ability) => ability.ability.url),

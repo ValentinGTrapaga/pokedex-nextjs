@@ -1,8 +1,9 @@
 const { evChain, evChain2, evChain3 } = require('./testChains')
 
-function formatChain(evChain) {
+export function formatChain(evChain) {
+  const { chain } = evChain
   const first = {
-    pokemon: evChain.chain.species,
+    pokemon: chain.species.name,
     pokemonMethod: evChain.baby_trigger_item?.name
   }
   let next = evChain.chain.evolves_to.map((evChain) =>
@@ -35,24 +36,27 @@ function formatInnerEvolution(chain) {
         // const item = `${key}: ${value}`
       }
     }
-    console.log(arrDesc)
-    console.log('--- Item ended ---')
+    // console.log(arrDesc)
+    // console.log('--- Item ended ---')
     pokemonMethod.push(arrDesc)
   })
-  console.log('--- Evolution ended ---')
+  // console.log('--- Evolution ended ---')
   let pokemonNext = chain.evolves_to.map((evChain) =>
     formatInnerEvolution(evChain)
   )
+  // console.log('Pokemon: ', pokemon)
+  // console.log('pokemonMethod: ', pokemonMethod)
+  // console.log('pokemonNext: ', pokemonNext)
   return { pokemon, pokemonMethod, pokemonNext }
 }
 
-const { first, next } = formatChain(evChain3)
-console.log('----------------------')
-console.log('----------------------')
-console.log('----------------------')
-console.log('----------------------')
-console.log('----------------------')
-console.log('----------------------')
-console.log('----------------------')
-console.log(first, next)
+// const { first, next } = formatChain(evChain3)
+// console.log('----------------------')
+// console.log('----------------------')
+// console.log('----------------------')
+// console.log('----------------------')
+// console.log('----------------------')
+// console.log('----------------------')
+// console.log('----------------------')
+// console.log(first, next)
 // console.log(formatInnerEvolution(evChain.chain.evolves_to[0]))

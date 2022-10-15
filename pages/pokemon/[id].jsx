@@ -4,13 +4,13 @@ import { useRouter } from 'node_modules/next/router'
 import { useFetchPokemon } from 'hooks/useFetchPokemon'
 import { NavBar } from 'components/NavBar/index'
 import { AbilitiesCard } from 'components/AbilitiesCard/index'
+import { EvolutionCard } from 'components/EvolutionCard/index'
 
 const Pokemon = () => {
   const router = useRouter()
   const { id } = router.query
 
-  const { pokemon, loading, abilities } = useFetchPokemon(id)
-
+  const { pokemon, loading, abilities, species } = useFetchPokemon(id)
   return (
     <>
       <NavBar back />
@@ -22,6 +22,7 @@ const Pokemon = () => {
           ) : (
             <p>Loading...</p>
           )}
+          {!loading ? <EvolutionCard species={species} /> : <p>Loading...</p>}
         </div>
       </div>
     </>
