@@ -13,7 +13,7 @@ export const SearchBox = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    return router.push(`/pokemon/${pokemonSearch}`)
+    return router.push(`/pokemon/${pokemonSearch.toLowerCase()}`)
   }
 
   return (

@@ -4,7 +4,7 @@ export function formatChain(evChain) {
   const { chain } = evChain
   const first = {
     pokemon: chain.species.name,
-    pokemonMethod: evChain.baby_trigger_item?.name
+    pokemonMethod: [evChain.baby_trigger_item?.name]
   }
   let next = evChain.chain.evolves_to.map((evChain) =>
     formatInnerEvolution(evChain)

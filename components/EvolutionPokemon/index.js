@@ -34,12 +34,11 @@ export const EvolutionPokemon = ({ pokemonId, method, nextPokemonArr }) => {
     <div className='flex flex-row items-center mx-auto justify-between'>
       {!loading && (
         <>
-          <article
-            onClick={pushPage}
-            className='w-[8rem] lg:w-[13rem] bg-slate-50 h-full cursor-pointer m-3'>
+          <article className='w-[8rem] lg:w-[13rem] bg-slate-50 h-full  m-3'>
             <img
+              onClick={pushPage}
               src={pokemon.sprites.front_default}
-              className='mx-auto'
+              className='mx-auto cursor-pointer'
             />
             <p className='text-center text-[12px]'>
               {capitalize(pokemon.name)}
