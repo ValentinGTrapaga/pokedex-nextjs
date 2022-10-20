@@ -14,7 +14,7 @@ const Pokemon = () => {
   return (
     <>
       <NavBar back />
-      <div className='text-black container flex flex-col items-stretch justify-center md:flex md:flex-row gap-4 mx-auto'>
+      <div className='text-black container flex flex-col items-start justify-center md:flex md:flex-row gap-2 mx-auto'>
         {!loading ? <Pokecard pokemon={pokemon} /> : <p>Loading...</p>}
         <div>
           {!loading ? (
