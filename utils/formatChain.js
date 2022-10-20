@@ -24,9 +24,8 @@ function formatInnerEvolution(chain) {
       if (evDetails[props]) {
         // console.log('props: ', props)
         // console.log('evDetails[props]: ', evDetails[props])
-        const item = {
-          [props]: evDetails[props]
-        }
+        const item = `${props}: ${evDetails[props]}`
+
         if (typeof evDetails[props] === 'object') {
           arrDesc.push(evDetails[props].name)
         } else {

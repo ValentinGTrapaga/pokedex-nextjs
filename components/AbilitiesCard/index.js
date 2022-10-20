@@ -1,8 +1,8 @@
-import { useFetchAbilities } from 'hooks/useFetchAbilities'
+import { useAbilities } from 'hooks/useAbilities'
 import React from 'react'
 
 export const AbilitiesCard = ({ abilities }) => {
-  const { abilitiesFetched, error } = useFetchAbilities(abilities)
+  const { abilitiesFetched, error } = useAbilities(abilities)
 
   return (
     <div className='container md:col-span-1 border-4 border-black bg-slate-50 text-sm md:text-base'>
@@ -11,12 +11,12 @@ export const AbilitiesCard = ({ abilities }) => {
       </h1>
       <div className='h-full '>
         {!error &&
-          abilitiesFetched.map((ability) => {
+          abilitiesFetched.map((ability, index) => {
             return (
               <>
                 <p
                   className='p-3 py-2 text-[11px] leading-5 text-justify border-b-2 border-black last:border-hidden'
-                  key={ability}>
+                  key={index}>
                   {ability}
                 </p>
               </>

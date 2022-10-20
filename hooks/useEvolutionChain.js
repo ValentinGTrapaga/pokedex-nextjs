@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { formatChain } from 'utils/formatChain'
 
 export const useEvolutionChain = (species) => {
-  const [evChain, setEvChain] = useState({ prev: [], next: [] })
+  const [evChain, setEvChain] = useState({ first: {}, next: [] })
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
 
@@ -11,17 +11,14 @@ export const useEvolutionChain = (species) => {
     const fetchEvChain = async () => {
       setLoading(true)
       try {
-        console.log('species: ', species)
         const speciesRes = await fetch(species.url)
         const speciesData = await speciesRes.json()
         const { evolution_chain } = speciesData
-        console.log('ev_chain: ', evolution_chain)
         const evChainRes = await fetch(evolution_chain.url)
         const evChainData = await evChainRes.json()
-        console.log(evChainData)
-        const { first, next } = formatChain(evChainData)
-        console.log('firstPokemon: ', first.pokemon, first.pokemonMethod)
-        console.log('next: ', next)
+        const evChain = formatChain(evChainData)
+        console.log(formatChain(evChainData))
+        setEvChain(evChain)
         setLoading(false)
       } catch (error) {
         setLoading(false)

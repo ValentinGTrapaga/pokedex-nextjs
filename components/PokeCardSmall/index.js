@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { capitalize } from 'utils/capitalize'
-import { useRouter } from 'next/router'
-import Types from '../TypesDiv'
+import { useRouter } from 'node_modules/next/router'
+import Types from '../TypesDiv/index'
 
-const PokeCardSmall = ({ pokemonUrl }) => {
+const PokeCardSmall = ({ pokemonUrl, evDesc }) => {
   const [pokemon, setPokemon] = useState(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
@@ -28,19 +28,26 @@ const PokeCardSmall = ({ pokemonUrl }) => {
       {loading ? (
         <p>loading ...</p>
       ) : (
-        <article
-          onClick={pushPage}
-          className='max-w-[8rem] border-black border-2 bg-slate-50 h-full flex flex-col justify-between mx-auto cursor-pointer'>
-          <img
-            src={pokemon.sprites.front_default}
-            className='w-[8rem] p-2'
-            alt={pokemon.name}
-          />
-          <p className='text-[8px] sm:text-[10px] text-center px-1'>
-            #{pokemon.id} {capitalize(pokemon.name)}
-          </p>
-          <Types pokemon={pokemon} />
-        </article>
+        <>
+          <article
+            onClick={pushPage}
+            className='max-w-[8rem] border-black border-2 bg-slate-50 flex flex-col h-full justify-between mx-auto cursor-pointer'>
+            <img
+              src={pokemon.sprites.front_default}
+              className='w-[8rem] p-2'
+              alt={pokemon.name}
+            />
+            <p className='text-[8px] sm:text-[10px] text-center px-1'>
+              #{pokemon.id} {capitalize(pokemon.name)}
+            </p>
+            <Types pokemon={pokemon} />
+          </article>
+          {evDesc && (
+            <p className='text-[8px] sm:text-[10px] text-center px-1'>
+              {evDesc}
+            </p>
+          )}
+        </>
       )}
     </div>
   )

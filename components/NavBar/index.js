@@ -6,7 +6,7 @@ import React from 'react'
 export const NavBar = ({ back }) => {
   const router = useRouter()
   const goHome = () => {
-    router.push('/')
+    router.push('/p/0')
   }
   const goBack = () => {
     router.back()
