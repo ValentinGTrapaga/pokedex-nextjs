@@ -1,4 +1,5 @@
 import { useAbilities } from 'hooks/useAbilities'
+import FadeLoader from 'node_modules/react-spinners/FadeLoader'
 import React from 'react'
 
 export const AbilitiesCard = ({ abilities }) => {
@@ -10,7 +11,7 @@ export const AbilitiesCard = ({ abilities }) => {
         Abilities
       </h1>
       <div className='h-full '>
-        {!error &&
+        {!error ? (
           abilitiesFetched.map((ability, index) => {
             return (
               <>
@@ -21,7 +22,12 @@ export const AbilitiesCard = ({ abilities }) => {
                 </p>
               </>
             )
-          })}
+          })
+        ) : (
+          <div className='flex flex-col items-center h-full opacity-50'>
+            <FadeLoader />
+          </div>
+        )}
       </div>
     </div>
   )

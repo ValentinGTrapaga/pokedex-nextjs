@@ -4,6 +4,7 @@ import { useRouter } from 'node_modules/next/router'
 import { capitalize } from 'utils/capitalize'
 import { formatMethod } from 'utils/formatWord'
 import { formatMethods } from 'utils/formatMethods'
+import FadeLoader from 'node_modules/react-spinners/FadeLoader'
 
 export const EvolutionPokemon = ({ pokemonId, method, nextPokemonArr }) => {
   const { pokemon, loading } = useFetchPokemon(pokemonId)
@@ -32,7 +33,7 @@ export const EvolutionPokemon = ({ pokemonId, method, nextPokemonArr }) => {
 
   return (
     <div className='flex flex-row items-center mx-auto justify-between'>
-      {!loading && (
+      {!loading ? (
         <>
           <article className='w-[8rem] lg:w-[13rem] bg-slate-50 h-full  m-3'>
             <img
@@ -50,6 +51,10 @@ export const EvolutionPokemon = ({ pokemonId, method, nextPokemonArr }) => {
           </article>
           <section className='flex flex-col flex-wrap'>{nextPokemons}</section>
         </>
+      ) : (
+        <div className='flex flex-col items-center h-full opacity-50'>
+          <FadeLoader />
+        </div>
       )}
     </div>
   )

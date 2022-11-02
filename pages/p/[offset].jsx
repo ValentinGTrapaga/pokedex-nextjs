@@ -4,6 +4,7 @@ import PokeCardSmall from 'components/PokeCardSmall/index'
 import { useUpdateHomePage } from 'hooks/useUpdateHomePage'
 import { NextNavButton, PrevNavButton } from 'components/NavButton/index'
 import { useRouter } from 'node_modules/next/router'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const Home = () => {
   const router = useRouter()
@@ -51,9 +52,11 @@ const Home = () => {
         />
       </Head>
       <NavBar back={null} />
-      <div className='my-6 mx-auto container grid gap-3 grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 place-content-center'>
+
+      <div className='my-6 mx-auto container grid gap-3 grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 place-content-center'>
         {pokemonsCardsMini}
       </div>
+
       <PrevNavButton
         handleClick={() => handleClickPage(prev)}
         url={prev}
